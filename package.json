@@ -1,0 +1,35 @@
+{
+	"name": "node-js-rest-api",
+	"version": "0.0.1",
+	"description": "Sample boilerplate to kickstart a new nodejs / express REST project",
+	"main": "server.js",
+	"author": "Gábor Magyar",
+	"license": "MIT",
+	"scripts": {
+		"start": "nodemon server.js",
+		"test-unit": "mocha tests/unit/ --ui bdd --recursive --reporter spec --timeout 10000 --slow 900",
+		"test-integration": "mocha tests/integration/ --ui bdd --recursive --reporter spec --timeout 10000 --slow 900"
+	},
+	"devDependencies": {
+		"chai": "^4.1.2",
+		"chai-things": "^0.2.0",
+		"mocha": "^5.2.0",
+		"request": "^2.87.0"
+	},
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"connect-mongo": "^2.0.1",
+		"express": "^4.16.3",
+		"express-session": "^1.15.6",
+		"express-validator": "^5.2.0",
+		"lodash": "^4.17.10",
+		"method-override": "^2.3.10",
+		"mongoose": "^5.1.7",
+		"morgan": "^1.9.0",
+		"passport": "^0.4.0",
+		"passport-http": "^0.3.0",
+		"passport-http-bearer": "^1.0.1",
+		"passport-local": "^1.0.0",
+		"winston": "^3.0.0"
+	}
+}
