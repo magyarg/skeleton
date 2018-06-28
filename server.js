@@ -4,6 +4,7 @@ const ENV = process.env.NODE_ENV || 'development';
 const http = require('http');
 const express = require('express');
 const config = require('./config/common');
+const logger = require('./src/utils/logger');
 const app = express();
 
 /**
@@ -47,7 +48,7 @@ server = http.createServer(app);
 server.listen(config.port || 3000, config.hostname, () => {
     let addr = server.address();
 
-    // Note: Implement winston logger
+    logger.info('Servert started listening on port :', 3000);
 });
 
 module.exports = app;
