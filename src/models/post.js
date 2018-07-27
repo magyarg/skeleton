@@ -13,6 +13,11 @@ module.exports = {
         return db.select().from('posts');
     },
 
+    /**
+     * Performs a where query on the database base on the
+     * serach criteria.
+     * @param {Object} criteriaHash
+     */
     where(criteriaHash) {
         let searchCriteria = criteriaHash || {};
         return db.select().from('posts').where(searchCriteria);
