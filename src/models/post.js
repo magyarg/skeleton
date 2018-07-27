@@ -1,22 +1,21 @@
 const _ = require('lodash');
+const databaseManager = require('../services/databaseManager');
 
-const dummyPosts = [
-    {
-        id: 1,
-        title: 'Lorem ipsum',
-        body: 'Dolor sit amet'
-    },
-    {
-        id: 2,
-        title: 'Lorem ipsum',
-        body: 'Dolor sit amet'
-    }
-];
+// Initialize the database connection
+let db = databaseManager.initialize();
 
 module.exports = {
 
+    /**
+     * Returns the whole set from the posts table
+     */
     all() {
-        return dummyPosts;
+        return db.select().from('posts');
+    },
+
+    where(criteriaHash) {
+        let searchCriteria = criteriaHash || {};
+        return db.select().from('posts').where(searchCriteria);
     }
 
 };

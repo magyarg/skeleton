@@ -5,6 +5,7 @@ const http = require('http');
 const express = require('express');
 const config = require('./config/common');
 const logger = require('./src/utils/logger');
+const database = require('./src/services/databaseManager');
 const app = express();
 
 /**
