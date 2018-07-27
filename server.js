@@ -5,7 +5,6 @@ const http = require('http');
 const express = require('express');
 const config = require('./config/common');
 const logger = require('./src/utils/logger');
-const database = require('./src/services/databaseManager');
 const app = express();
 
 /**
@@ -47,8 +46,6 @@ app.use((err, req, res, next) => {
  */
 server = http.createServer(app);
 server.listen(config.port || 3000, config.hostname, () => {
-    let addr = server.address();
-
     logger.info('Servert started listening on port :', 3000);
 });
 
