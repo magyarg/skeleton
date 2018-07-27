@@ -1,12 +1,27 @@
 module.exports = {
 
     /**
-     * Returns a JSON formattted result
-     * @param {String} prop
+     * Returns the formatted response to return with
+     * @param {Object} response
+     * @param {String} message
      */
-    sendJSONresponse(prop) {
-        return function(req, res, next) {
-            res.json(req.resources[prop]);
+    formatResponse(response, message) {
+        return {
+            code: 200,
+            message: message || '',
+            data: response,
+        };
+    },
+
+    /**
+     * Returns the formatted error message to return with
+     * @param {String} message
+     */
+    formatErrorMessage(message) {
+        return {
+            code: 503,
+            message: message,
+            data: [],
         };
     }
 

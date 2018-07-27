@@ -2,6 +2,8 @@
  * Module dependencies
  */
 const _ = require('lodash');
+const logger = require('../utils/logger');
+const response = require('../utils/response');
 const Post = require('../models/post');
 
 /**
@@ -11,7 +13,12 @@ const Post = require('../models/post');
  * @param {Object} next
  */
 module.exports.getAll = function(req, res, next) {
-    return res.json({ method: 'getAll' });
+    Post.all()
+        .then((posts) => res.json(response.formatResponse(posts)))
+        .catch((error) => {
+            logger.error(error);
+            res.json(response.formatErrorMessage(error));
+        });
 };
 
 /**
@@ -22,5 +29,10 @@ module.exports.getAll = function(req, res, next) {
  * @param {Object} next
  */
 module.exports.findOne = function (req, res, next) {
-    return res.json({ method: 'findOne', params: req.params });
+    Post.where({ id: req.params.id })
+        .then((post) => res.json(response.formatResponse(post)))
+        .catch((error) => {
+            logger.error(error);
+            res.json(response.formatErrorMessage(error));
+        });
 };
